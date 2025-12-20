@@ -9,9 +9,7 @@ export const validateProduct = [
   body('price')
     .notEmpty().withMessage('El precio es obligatorio')
     .isFloat({ min: 0 }).withMessage('Debe ser un número positivo'),
-  
-  body('availability')
-    .isBoolean().withMessage('Debe ser true o false'),
+
   
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
