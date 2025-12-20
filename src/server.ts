@@ -1,6 +1,8 @@
 import express from 'express';
+import cors from 'cors';
 import router from './routes/router';
 import db from './config/db';
+
 
 //conectar a la base de datos
 async function conectarDB() {
@@ -16,6 +18,7 @@ async function conectarDB() {
 conectarDB();
 
 const app = express();
+app.use(cors()); // Habilitar CORS para todas las rutas
 app.use(express.json());
 app.use('/api/productos', router);
 export default app;
