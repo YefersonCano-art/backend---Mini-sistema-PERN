@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Product from "../models/Product.model"
+import { resetDatabase } from '../services/databaseCleanup';
 
 
 const getProducts = async (req: Request, res: Response) => {
@@ -39,4 +40,13 @@ const deleteProduct = async (req: Request, res: Response) => {
     res.json({message: 'Producto eliminado'});
 }
 
-export { createProduct, getProducts, getProductById, editProduct, deleteProduct };
+const resetDemo = async (req: Request, res: Response) => {
+    const result = await resetDatabase();
+    if (result.success) {
+        res.json(result);
+    } else {
+        res.status(500).json(result);
+    }
+}
+
+export { createProduct, getProducts, getProductById, editProduct, deleteProduct, resetDemo };
