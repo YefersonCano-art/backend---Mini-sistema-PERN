@@ -8,6 +8,6 @@ try {
 }
 
 const db = new Sequelize(process.env.DATABASE_URL, {
-    models: [__dirname + '/../models/*.model.ts']
+    models: [__dirname + '/../models/']
 });
 export default db;
